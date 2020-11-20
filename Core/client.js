@@ -16,30 +16,34 @@ class UEClient {
     }
 
     authenticate() {
+        const $this = this;
+
         return (axios.post('https://ios-api-gateway.frichti.co/auth/token', {
             email: this.email,
             password: this.password,
             grant_type: 'password'
         }).then(function (response) {
             console.log("Authentification succesful");
-            setToken(response.data.token);
+            $this.setToken(response.data.token);
         }).catch(function (error) {
-            console.log(error);
+            console.log(error.response.data.error);
         }));
     }
 
-    authenticate(email, password) {
+   /* authenticate = (email, password) => {
+        const $this = this;
+
         return (axios.post('https://ios-api-gateway.frichti.co/auth/token', {
             email: email,
             password: password,
             grant_type: 'password'
         }).then(function (response) {
             console.log("Authentification succesful");
-            setToken(response.data.token);
+            $this.setToken(response.data.token);
         }).catch(function (error) {
             console.log(error);
         })); 
-    }
+    }*/
 
 }
 
