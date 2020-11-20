@@ -6,10 +6,10 @@ class Store {
         this.token = client.token;
     }
 
-    async getAllProducts() {
+    async getProducts(store, type) {
         const products = [];
 
-        const list = await axios.get('https://ios-api-gateway.frichti.co/v6/menu/hubs/4/slugs/homepage-group?rootslug=live', {
+        const list = await axios.get(`https://ios-api-gateway.frichti.co/v6/menu/hubs/4/slugs/${type}?rootslug=${store}`, {
             headers: {
                 'Authorization': `Bearer ${this.token}`
             }
