@@ -21,11 +21,15 @@ async function main() {
     await client.authenticate();
     const store = new Store(client);
     
-    products = await store.getAllProducts();
+    products = await store.getProducts('hypermarket', 'epicerie-group');
+
+    const id = [];
     products.forEach(product => {
-        console.log(product.productId);
+        if (!id.includes(product.productId))
+            id.push(product.productId);
+       // console.log(product.productId);
     })
-    console.log(products.length);
+
 
    /*const items = await axios.get('https://ios-api-gateway.frichti.co/v6/menu/hubs/4/slugs/homepage-group?rootslug=live', {
     headers: {
