@@ -14,21 +14,17 @@ async function main() {
 
     rl.question("Email: ", async email => {
         rl.question("Password: ", async password => {
+            await client.authenticate(email, password);
             rl.close();
-            await client.setEmail(email);
-            await client.setPassword(password);
-
-            console.log(client.password);
         });
     });
 
-   /* const login = await (axios.post('https://ios-api-gateway.frichti.co/auth/token', {
-        email: client.email,
-        password: client.password,
-        grant_type: 'password'
-    }));
+    rl.on("close", function () {
+        console.log("Exit Programm");
+        process.exit(0);
+    })
 
-   const items = await axios.get('https://ios-api-gateway.frichti.co/v6/menu/hubs/4/slugs/homepage-group?rootslug=live', {
+   /*const items = await axios.get('https://ios-api-gateway.frichti.co/v6/menu/hubs/4/slugs/homepage-group?rootslug=live', {
     headers: {
         'Authorization': `Bearer ${Buffer.from(login.data.token).toString('base64')}`
        }
