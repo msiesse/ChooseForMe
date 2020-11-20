@@ -11,11 +11,17 @@ async function main() {
 
    const response = await axios.get('https://ios-api-gateway.frichti.co/customers/524693', {
        headers: {
-        'Authorization': `Bearer ${btoa(login.data.token)}`
+        'Authorization': `Bearer ${Buffer.from(login.data.token).toString('base64')}`
        }
    }).catch(function(error) { console.log(error.response) });
 
-   console.log(response);
+   const items = await axios.get('https://ios-api-gateway.frichti.co/v6/menu/hubs/4/slugs/plats-cuisines-group?rootslug=live', {
+    headers: {
+        'Authorization': `Bearer ${Buffer.from(login.data.token).toString('base64')}`
+       }
+   }).catch(function(error) { console.log(error.response) });
+
+   console.log(items.data.collections.plats.items);
 }
 
 main();
