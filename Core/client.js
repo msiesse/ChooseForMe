@@ -2,13 +2,14 @@ const fs = require('fs');
 
 class UEClient {
 
-    setMail(mail) {
-        this.mail = mail;
+    setEmail(email) {
+        this.email = email;
     }
 
     setPassword(password) {
         this.password = password;
     }
 
-    
 }
+
+exports.UEClient = UEClient;
