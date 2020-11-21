@@ -8,18 +8,34 @@ class Order {
         this.clientId = client.id;
     }
 
-    static async getCard() {
-        const card = await axios.post('https://ios')
-    }
-
-    async orderProduct() {
-
-        const list = await axios.get(`https://ios-api-gateway.frichti.co/v6/menu/hubs/4/slugs/${type}?rootslug=${store}`, {
+    async getCart() {
+        const cart = await axios.post('https://ios-api-gateway.frichti.co/carts', {
+            addressId: this.address,
+            customerId: this.clientId,
+            source: 'mobile-ios'
+        }, {
             headers: {
                 'Authorization': `Bearer ${this.token}`
             }
         }).catch(function (error) {
             console.log(error);
         });
+
+        this.cart = cart.data.id;
+    }
+
+    async orderProduct() {
+
+        const ticket = await axios.post(`https://ios-api-gateway.frichti.co/carts/v2/${this.cart}/products/1000918`, {}, {
+            headers: {
+                'Authorization': `Bearer ${this.token}`
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        return (ticket);
     }
 }
+
+exports.Order = Order

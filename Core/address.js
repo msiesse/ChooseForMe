@@ -24,7 +24,7 @@ class Address {
         if (address !== undefined) {
             console.log(`Find an address for ${address_name}`);
         }
-        return (address);
+        return (address.data[0]);
     }
 }
 
