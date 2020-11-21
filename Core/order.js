@@ -4,6 +4,12 @@ const { UEClient } = require('./client');
 class Order {
     constructor (client) {
         this.token = client.token;
+        this.address = client.address.addressId;
+        this.clientId = client.id;
+    }
+
+    static async getCard() {
+        const card = await axios.post('https://ios')
     }
 
     async orderProduct() {

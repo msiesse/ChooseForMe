@@ -19,6 +19,10 @@ class UEClient {
         this.address = address;
     }
 
+    setId(id) {
+        this.id = id;
+    }
+
     authenticate() {
         const $this = this;
 
@@ -29,6 +33,7 @@ class UEClient {
         }).then(function (response) {
             console.log("Authentification succesful");
             $this.setToken(response.data.token);
+            $this.setId(response.data.id);
         }).catch(function (error) {
             console.log(error.response.data.error);
         }));
