@@ -33,9 +33,10 @@ async function main() {
     const order = new Order(client);
 
     await order.getCart();
-    const ticket = await order.orderProduct();
 
-    console.log(ticket);
+    const slot = await order.getFirstSlot();
+
+    //const ticket = await order.orderProduct('1000918');
 
     /*const id = [];
     products.forEach(product => {
