@@ -36,7 +36,8 @@ async function main() {
 
     const slot = await order.getFirstSlot();
 
-    //const ticket = await order.orderProduct('1000918');
+    const ticket = await order.orderProduct('1000918');
+    const state = await order.checkout();
 
     /*const id = [];
     products.forEach(product => {

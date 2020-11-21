@@ -19,7 +19,7 @@ class Order {
                 'Authorization': `Bearer ${this.token}`
             }
         }).catch(function (error) {
-            console.log(error);
+            console.log(error.response);
         });
 
         this.cart = cart.data.id;
@@ -31,13 +31,13 @@ class Order {
                 'Authorization': `Bearer ${this.token}`
             }
         }).catch((error) => {
-            console.log(error);
+            console.log(error.response);
         });
 
         this.slot = slots.data.find(slot => slot.type === 'DEFAULT');
     }
 
-    static async setSlot() {
+    async setSlot() {
         const modifSlot = await axios.put(`${this.url}/carts/${this.cart}`, {
             deliveryDate: this.slot.day,
             deliverySlotId: this.slot.id
@@ -46,10 +46,26 @@ class Order {
                 'Authorization': `Bearer ${this.token}`
             }
         }).catch((error) => {
-            console.log(error);
+            console.log(error.response);
         });
 
         console.log(modifSlot.data.payment);
+        this.idCredit = modifSlot.data.payment.creditCards[0].id;
+    }
+
+    async setPaymentMethod(type, idCredit) {
+        if (idCredit === undefined)
+            idCredit = this.idCredit;
+
+        const pMethod = await axios.post(`${this.url}/carts/${this.cart}/payment?type=${type}`, {
+            id: idCredit
+        }, {
+            headers: {
+                'Authorization': `Bearer ${this.token}`
+            }
+        }).catch((error) => {
+            console.log(error.response);
+        })
     }
 
     async orderProduct(productId) {
@@ -59,11 +75,25 @@ class Order {
                 'Authorization': `Bearer ${this.token}`
             }
         }).catch(function (error) {
-            console.log(error);
+            console.log(error.response);
         });
 
         await this.setSlot();
         return (ticket);
+    }
+
+    async checkout() {
+        await this.setPaymentMethod('creditCards', 628410);
+
+        const state = await axios.post(`${this.url}/orders/checkout/${this.cart}`, {}, {
+            headers: {
+                'Authorization': `Bearer ${this.token}`
+            }
+        }).catch(function (error) {
+            console.log(error.response);
+        });
+
+        return (state);
     }
 }
 
