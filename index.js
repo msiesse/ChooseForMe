@@ -3,6 +3,7 @@ const fs = require('fs');
 const { UEClient } = require('./Core/client');
 const { Store } = require ('./Core/store');
 const { Address } = require('./Core/address');
+const { Order } = require('./Core/order');
 
 async function main() {
 
@@ -24,9 +25,19 @@ async function main() {
     console.log(client.address);
 
     // Store tests
-    const store = new Store(client);
+  /*  const store = new Store(client);
     
-    products = await store.getProducts('live', 'plats-cuisines-group');
+    products = await store.getProducts('live', 'plats-cuisines-group');*/
+
+    // Order tests
+    const order = new Order(client);
+
+    await order.getCart();
+
+    const slot = await order.getFirstSlot();
+
+    const ticket = await order.orderProduct('1000918');
+    const state = await order.checkout();
 
     /*const id = [];
     products.forEach(product => {
