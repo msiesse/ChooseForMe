@@ -5,6 +5,7 @@ class Randominette {
         this.products = products;
     }
 
+    // This function make a random Menu. There will be at least a main dish
     makeMenu(maxMenu) {
         const menu = []
         let price = 0;

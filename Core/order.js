@@ -9,6 +9,7 @@ class Order {
         this.url = 'https://ios-api-gateway.frichti.co';
     }
 
+    // Function to get the Session Cart Id
     async getCart() {
         const cart = await axios.post(`${this.url}/carts`, {
             addressId: this.address,
@@ -26,6 +27,7 @@ class Order {
         this.cart = cart.data.id;
     }
 
+    // Find the Id of the first available Slot
     async getFirstSlot() {
         const slots = await axios.get(`${this.url}/slots?cart=${this.cart}`, {
             headers: {
@@ -51,6 +53,7 @@ class Order {
         });
     }
 
+    // Get the first credit card id of the account
     async getPaymentMethod() {
         const userInfos = await axios.get(`${this.url}/customers/${this.clientId}`, {
             headers: {
