@@ -64,9 +64,6 @@ class Order {
     }
 
     async setPaymentMethod(type, idCredit) {
-        //Some verification with a card with not enough fund
-            if (idCredit !== 628410)
-                idCredit = 628410;
         const pMethod = await axios.post(`${this.url}/carts/${this.cart}/payment?type=${type}`, {
             id: idCredit
         }, {
@@ -104,7 +101,8 @@ class Order {
     }
 
     async checkout() {
-        await this.setPaymentMethod('creditCards', this.getPaymentMethod());
+        const idCredit = await this.getPaymentMethod();
+        await this.setPaymentMethod('creditCards', idCredit);
 
         const state = await axios.post(`${this.url}/orders/checkout/${this.cart}`, {}, {
             headers: {
