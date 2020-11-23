@@ -43,7 +43,12 @@ class TheMaker {
 
         const menu = maker.makeMenu(1200);
 
-        console.log(menu);
+        // Cart tests
+
+        const order = new Order(client);
+
+        order.getCart();
+        
 
         return (menu);
     }

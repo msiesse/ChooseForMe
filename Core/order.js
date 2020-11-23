@@ -10,7 +10,7 @@ class Order {
     }
 
     async getCart() {
-        const cart = await axios.post('https://ios-api-gateway.frichti.co/carts', {
+        const cart = await axios.post(`${this.url}/carts`, {
             addressId: this.address,
             customerId: this.clientId,
             source: 'mobile-ios'
@@ -48,9 +48,16 @@ class Order {
         }).catch((error) => {
             console.log(error.response);
         });
+    }
 
-        console.log(modifSlot.data.payment);
-        this.idCredit = modifSlot.data.payment.creditCards[0].id;
+    async getPaymentMethod() {
+        const payments = await axios.get(`${this.url}/customers/${this.clientId}`, {
+            headers: {
+                'Authorization': `Bearer ${this.token}`
+            }
+        }).catch(error) => {
+            console.log(error.resposne);
+        }
     }
 
     async setPaymentMethod(type, idCredit) {
