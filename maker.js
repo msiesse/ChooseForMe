@@ -9,10 +9,6 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
 class TheMaker {
 
-    sleep = (milliseconds) => {
-        return new Promise(resolve => setTimeout(resolve, milliseconds))
-      }
-
     async mainMaker() {
 
         const client = new UEClient();
