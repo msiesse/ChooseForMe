@@ -60,7 +60,7 @@ Vous devrez recevoir votre menu d'ici 1h.
 ### ATTENTION
 
 Le serveur est très peu sécurisé. Si quelqu'un est connecté à votre réseau et connait l'adresse IP ainsi que la requête à demander, il pourra commander à votre place.
-En attendant d'ajouter une protection, pensez bien à sécurisez votre réseau et que vous êtes le seul à y avoir accès.
+En attendant d'ajouter une protection, pensez bien à sécurisez votre réseau et assurez vous d'être le seul à y avoir accès.
 
 ## Auteur
 * **Martin Siesse** [Msiesse](https://github.com/msiesse)
