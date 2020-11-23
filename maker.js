@@ -5,8 +5,13 @@ const { Store } = require ('./Core/store');
 const { Address } = require('./Core/address');
 const { Order } = require('./Core/order');
 const { Randominette } = require('./Random/random');
+const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
 class TheMaker {
+
+    sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+      }
 
     async mainMaker() {
 
@@ -47,10 +52,19 @@ class TheMaker {
 
         const order = new Order(client);
 
-        order.getCart();
-        
+        await order.getCart();
 
-        return (menu);
+        for (let i = 0; i < menu.length; i++) {
+            await order.orderProduct(menu[i].productId);
+        }
+
+        await order.getFirstSlot();
+        await order.setSlot();
+
+        const checkout = await order.checkout();
+
+        if (checkout)
+            console.log(checkout.data);
     }
 }  
 

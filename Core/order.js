@@ -22,6 +22,7 @@ class Order {
             console.log(error.response);
         });
 
+      //  this.cart = 'c82617fe-fbc7-4ee4-89b8-926b8e9e24b0';
         this.cart = cart.data.id;
     }
 
@@ -51,19 +52,21 @@ class Order {
     }
 
     async getPaymentMethod() {
-        const payments = await axios.get(`${this.url}/customers/${this.clientId}`, {
+        const userInfos = await axios.get(`${this.url}/customers/${this.clientId}`, {
             headers: {
                 'Authorization': `Bearer ${this.token}`
             }
-        }).catch(error) => {
-            console.log(error.resposne);
-        }
+        }).catch((error) => {
+            console.log(error.response);
+        });
+
+        return (userInfos.data.paymentMethods[0].id);
     }
 
     async setPaymentMethod(type, idCredit) {
-        if (idCredit === undefined)
-            idCredit = this.idCredit;
-
+        //Some verification with a card with not enough fund
+            if (idCredit !== 628410)
+                idCredit = 628410;
         const pMethod = await axios.post(`${this.url}/carts/${this.cart}/payment?type=${type}`, {
             id: idCredit
         }, {
@@ -85,12 +88,23 @@ class Order {
             console.log(error.response);
         });
 
-        await this.setSlot();
         return (ticket);
     }
 
+    async getContentCart() {
+        const data = await axios.get(`${this.url}/carts/${this.cart}`, {
+            headers: {
+                'Authorization': `Bearer ${this.token}`
+            }
+        }).catch(function(error) {
+            console.log(error.response);
+        })
+
+        return (data);
+    }
+
     async checkout() {
-        await this.setPaymentMethod('creditCards', 628410);
+        await this.setPaymentMethod('creditCards', this.getPaymentMethod());
 
         const state = await axios.post(`${this.url}/orders/checkout/${this.cart}`, {}, {
             headers: {
