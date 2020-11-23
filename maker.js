@@ -5,7 +5,6 @@ const { Store } = require ('./Core/store');
 const { Address } = require('./Core/address');
 const { Order } = require('./Core/order');
 const { Randominette } = require('./Random/random');
-const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
 class TheMaker {
 
