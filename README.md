@@ -6,7 +6,7 @@ Je ferai peut-être à l'avenir une version universel de ce projet.
 ## Introduction
 
 ChooseForMe est un programme simple qui vous permet de commander instantanément un menu aléatoire sur l'application Frichti. Pour cela, vous avez juste besoin de
-lancer votre serveur local sur un PC par exemple
+lancer votre serveur local sur un PC par exemple.
 
 ## Pré-requis
 
@@ -31,7 +31,7 @@ Créer un fichier host.txt avec comme contenu:
 votreadresseIPLocal
 ```
 
-Si vous etes sur mac, faites simplement un ifconfig et cherchez une adresse IPv4 sous la forme 192.168.x.x
+Si vous etes sur mac, faites simplement un ifconfig et cherchez une adresse IPv4 sous la forme 192.168.x.x.
 
 De mon côté, je trouve cette adresse sur l'interface en4, mais cela dépend de comment est organisé votre réseau.
 
