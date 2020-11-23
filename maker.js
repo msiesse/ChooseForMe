@@ -5,6 +5,7 @@ const { Store } = require ('./Core/store');
 const { Address } = require('./Core/address');
 const { Order } = require('./Core/order');
 const { Randominette } = require('./Random/random');
+const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
 class TheMaker {
 
@@ -43,9 +44,23 @@ class TheMaker {
 
         const menu = maker.makeMenu(1200);
 
-        console.log(menu);
+        // Cart tests
 
-        return (menu);
+        const order = new Order(client);
+
+        await order.getCart();
+
+        for (let i = 0; i < menu.length; i++) {
+            await order.orderProduct(menu[i].productId);
+        }
+
+        await order.getFirstSlot();
+        await order.setSlot();
+
+        const checkout = await order.checkout();
+
+        if (checkout)
+            console.log(checkout.data);
     }
 }  
 
