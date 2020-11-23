@@ -5,7 +5,7 @@ Je ferai peut-être à l'avenir une version universel de ce projet.
 
 ## Introduction
 
-ChooseForMe est un programme simple qui vous permet de commander instantanément un menu aléatoire sur l'application Frichti. Pour cela, vous avex juste besoin de
+ChooseForMe est un programme simple qui vous permet de commander instantanément un menu aléatoire sur l'application Frichti. Pour cela, vous avez juste besoin de
 lancer votre serveur local sur un PC par exemple
 
 ## Pré-requis
