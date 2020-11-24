@@ -73,6 +73,12 @@ https://votreadresseIP:3000/randomFrichti?API_KEY=votrekey
 
 Vous devrez recevoir votre menu d'ici 1h.
 
+Pour arrêter le serveur:
+```
+npm stop
+```
+
+
 ### Notes sur le SSL
 
 Sur Chrome, lorsque vous essaierez de vous connectez, vous risques de tomber sur cette erreur:
