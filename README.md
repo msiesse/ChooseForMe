@@ -14,6 +14,7 @@ Vous allez avoir besoin:
 - Un compte frichti vérifié
 - Une carte bancaire enregistré sur votre compte
 - Un ordinateur pour faire lancer le serveur sous nodeJS
+- Nodejs installé
 
 ### Installation
 
@@ -43,6 +44,11 @@ openssl genrsa -out key.pem
 openssl req -new -key key.pem -out csr.pem
 openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem
 rm csr.pem
+```
+
+Pour terminez, installez les packages nécessaires via npm:
+```
+npm install express axios nodemon
 ```
 
 
