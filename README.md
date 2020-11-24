@@ -67,5 +67,14 @@ https://votreadresseIP:3000/randomFrichti?API_KEY=votrekey
 
 Vous devrez recevoir votre menu d'ici 1h.
 
+### Notes sur le SSL
+
+Sur Chrome, lorsque vous essaierez de vous connectez, vous risques de tomber sur cette erreur:
+```
+NET::ERR_CERT_INVALID
+```
+
+Il s'agit du fait que le certificat SSL est auto-signé par vous-même et non pas par un tiers de confiance. Vous pouvez néanmois, en tapant 'thisisunsafe' sur votre clavier tout en restant sur la page vous connectez.
+
 ## Auteur
 * **Martin Siesse** [Msiesse](https://github.com/msiesse)
