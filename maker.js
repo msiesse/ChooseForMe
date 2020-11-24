@@ -56,10 +56,13 @@ class TheMaker {
         await order.getFirstSlot();
         await order.setSlot();
 
-        const checkout = await order.checkout();
+        /*const checkout = await order.checkout();
 
         if (checkout)
-            console.log(checkout.data);
+            console.log(checkout.data);*/
+
+        const contentCard = await order.getContentCart();
+        console.log(contentCard.data);
     }
 }  
 

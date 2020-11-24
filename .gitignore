@@ -1,2 +1,5 @@
 signin.txt
 host.txt
+key.pem
+cert.pem
+api_key.txt
