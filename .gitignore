@@ -4,3 +4,4 @@ key.pem
 cert.pem
 api_key.txt
 node_modules
+info.log

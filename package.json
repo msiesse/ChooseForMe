@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nohup nodemon app.js > info.log &"
   },
   "keywords": [],
   "author": "",
