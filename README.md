@@ -48,7 +48,7 @@ rm csr.pem
 
 Pour terminez, installez les packages nécessaires via npm:
 ```
-npm install express axios nodemon
+npm install
 ```
 
 
