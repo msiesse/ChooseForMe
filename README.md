@@ -22,7 +22,7 @@ Clonez le repo sur votre machine.
 Créez un fichier signin.txt avec comme contenu:
 
 ```
-votreadressemail;votremotdepasse;votreadressepostale
+votre_adresse_mail;votre_mot_de_passe;votre_adresse_de_livraison
 ```
 
 Créer un fichier host.txt avec comme contenu:
@@ -35,6 +35,18 @@ Si vous etes sur mac, faites simplement un ifconfig et cherchez une adresse IPv4
 
 De mon côté, je trouve cette adresse sur l'interface en4, mais cela dépend de comment est organisé votre réseau.
 
+Par la suite, vous devrez générer une clé de votre choix (SHA256 par exemple) que vous stockerez dans un fichier api_key.txt. Cette clé servira de connexion au serveur local pour plus de sécurité.
+
+Générez ensuite un certificat SSL auto-signé de la manière suivante:
+```
+openssl genrsa -out key.pem
+openssl req -new -key key.pem -out csr.pem
+openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem
+rm csr.pem
+```
+
+
+## Utilisation
 
 Lancez le serveur:
 ```
@@ -43,24 +55,17 @@ npm start
 
 Vous devriez voir quelque chose comme:
 ```
-Listening host: 192.168.x.x on port 3000
+192.168.x.x listening on port 3000
 ```
 
 Si c'est le cas, vous êtes prêt à utiliser le programme.
 
-## Utilisation
-
 Pour utiliser le programme, rien de plus simple, lancez une requête sur votre PC ou tout autre appareil connecté au réseau local sur l'adresse suivante:
 ```
-http://votreadresseIP:3000/randomFrichti
+https://votreadresseIP:3000/randomFrichti?API_KEY=votrekey
 ```
 
 Vous devrez recevoir votre menu d'ici 1h.
-
-### ATTENTION
-
-Le serveur est très peu sécurisé. Si quelqu'un est connecté à votre réseau et connait l'adresse IP ainsi que la requête à demander, il pourra commander à votre place.
-En attendant d'ajouter une protection, pensez bien à sécurisez votre réseau et assurez vous d'être le seul à y avoir accès.
 
 ## Auteur
 * **Martin Siesse** [Msiesse](https://github.com/msiesse)
