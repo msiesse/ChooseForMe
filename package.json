@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nohup nodemon app.js > info.log &"
+    "start": "nohup nodemon app.js > info.log & echo $! > pidSERVER",
+    "stop": "kill `cat pidSERVER`; rm -f pidSERVER"
   },
   "keywords": [],
   "author": "",
