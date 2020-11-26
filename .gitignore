@@ -5,3 +5,4 @@ cert.pem
 api_key.txt
 node_modules
 info.log
+cert.conf

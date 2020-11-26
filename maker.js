@@ -61,9 +61,10 @@ class TheMaker {
         if (checkout)
             console.log(checkout.data);
 
-       // const contentCard = await order.getContentCart();
-       // console.log(contentCard.data);
+        /*const contentCard = await order.getContentCart();
+        console.log(contentCard.data);*/
     }
+
 }  
 
 async function main() {

@@ -16,12 +16,10 @@ app.use(bodyParser.json());
 
 const apiKey = fs.readFileSync('./api_key.txt').toString();
 
-console.log();
-
-app.get(`/randomFrichti`, async function (req, res) {
+app.post(`/randomFrichti`, async function (req, res) {
     const launch = new TheMaker();
-    if (req.query.API_KEY === apiKey) {
-        const result = await res.send(launch.mainMaker());
+    if (req.body.api_key === apiKey) {
+        const result = await launch.mainMaker();
     } else {
         console.log('Bye');
     }
@@ -30,6 +28,6 @@ app.get(`/randomFrichti`, async function (req, res) {
 const result = fs.readFileSync('./host.txt')
 const host = result.toString();
 
-https.createServer(options, app).listen(3000, host, () => {
-    console.log(`${host} listening on port 3000`);
+https.createServer(options, app).listen(3001, host, () => {
+    console.log(`${host} listening on port 3001`);
 })

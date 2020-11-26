@@ -4,12 +4,13 @@ const { UEClient } = require('./client');
 class Store {
     constructor (client) {
         this.token = client.token;
+        this.url = 'https://ios-api-gateway.frichti.co';
     }
 
     async getProducts(store, type) {
         const products = [];
 
-        const list = await axios.get(`https://ios-api-gateway.frichti.co/v6/menu/hubs/4/slugs/${type}?rootslug=${store}`, {
+        const list = await axios.get(`${this.url}/v6/menu/hubs/4/slugs/${type}?rootslug=${store}`, {
             headers: {
                 'Authorization': `Bearer ${this.token}`
             }
