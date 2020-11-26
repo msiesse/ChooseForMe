@@ -2,6 +2,9 @@ const fs = require('fs');
 const axios = require('axios');
 
 class UEClient {
+    constructor() {
+        this.url = 'https://ios-api-gateway.frichti.co';
+    }
 
     setEmail(email) {
         this.email = email;
@@ -26,7 +29,7 @@ class UEClient {
     authenticate() {
         const $this = this;
 
-        return (axios.post('https://ios-api-gateway.frichti.co/auth/token', {
+        return (axios.post(`${this.url}/auth/token`, {
             email: this.email,
             password: this.password,
             grant_type: 'password'
