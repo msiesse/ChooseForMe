@@ -31,10 +31,7 @@ Créer un fichier host.txt avec comme contenu:
 ```
 votreadresseIPLocal
 ```
-
-Si vous etes sur mac, faites simplement un ifconfig et cherchez une adresse IPv4 sous la forme 192.168.x.x.
-
-De mon côté, je trouve cette adresse sur l'interface en4, mais cela dépend de comment est organisé votre réseau.
+Changez également la valeur de l'IP contenu dans le fichier ./interface/host.js.
 
 Par la suite, vous devrez générer une clé de votre choix (SHA256 par exemple) que vous stockerez dans un fichier api_key.txt. Cette clé servira de connexion au serveur local pour plus de sécurité.
 
@@ -68,7 +65,7 @@ Si c'est le cas, vous êtes prêt à utiliser le programme.
 
 Pour utiliser le programme, rien de plus simple, lancez une requête sur votre PC ou tout autre appareil connecté au réseau local sur l'adresse suivante:
 ```
-https://votreadresseIP:3000/randomFrichti?API_KEY=votrekey
+https://votreadresseIP:3000/?API_KEY=votrekey
 ```
 
 Vous devrez recevoir votre menu d'ici 1h.
